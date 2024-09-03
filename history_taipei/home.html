@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>臺北城不該不知的腳下歷史</title> 
+	<link rel="icon" href="image/taipeicastle.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> 
+	
+	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	<style>
+		div[class|="col"]{background-color:white;border: 0.5px ;}
+
+		.bg-custom {
+    		background-color: #678f8d;
+		}
+
+		.bg-custom.navbar-dark .navbar-nav .nav-link {
+    		color: #ffd900;
+		}
+
+		.spaced-text {
+			font-size: 30px;
+    		
+  		}
+
+		.custom-link {
+    		color:blue;
+  		}
+
+		.custom-btn {
+    		background-color: #678f8d;
+    		color: #FFFFFF;
+			border: 0;
+  		}
+
+		.custom-btn:hover {
+    		background-color: #8cc0bd; 
+    		color: #FFFFFF; 
+		}
+
+		.custom-btn:active {
+    		background-color: #678f8d !important;
+    		color: #FFFFFF;
+		}
+
+	
+
+	</style>
+  </head>
+
+  <script>
+	var t1=0;
+	while(t1==0){
+		var name = window.prompt("請輸入你的名字⊙▽⊙");
+		if (name && name.trim() !== '') {
+			try {
+				localStorage.setItem("userName", name);
+				alert("歡迎~~");
+				t1=1;
+			} catch (e) {
+				alert("儲存名字時出現錯誤：" + e.message);
+			}
+		} else {
+			alert("請輸入有效的名字！");
+		}
+	}
+
+	function startTimer() {
+		var sec = 0;
+		var timerid = window.setInterval(() => {
+			sec++;
+			var hours = Math.floor(sec / 3600); // 小時
+			var minutes = Math.floor((sec % 3600) / 60); // 分鐘
+			var seconds = sec % 60; // 秒
+
+			var formattedTime = hours + "小時:" + minutes + "分:" + seconds + "秒"; // 格式化時間
+
+			localStorage.setItem('formattedTime', formattedTime); // 將格式化時間存儲到 localStorage 中
+		}, 1000);
+	}
+
+    window.onload = function() {
+        var interactiveGame = document.getElementById('interactive-game');
+        if (interactiveGame) {
+          interactiveGame.style.display = 'block';
+        }
+
+		localStorage.removeItem('formattedTime'); 
+    	startTimer(); 
+
+		localStorage.removeItem('gameRecords');
+		localStorage.removeItem('gameRecords2');
+		localStorage.removeItem('gameRecords3');
+	}
+
+  </script>
+
+  <body>
+    <!--導覽列-->
+	<!--** class 應為 navbar navbar-dark bg-primary bg-opacity-75 navbar-expand-md -->
+	<nav class="navbar navbar-dark bg-custom navbar-expand-md">
+      <div class="container-fluid">
+		<!--導覽列的頁首-->
+        <a class="navbar-brand" href="#">臺北城不該不知的腳下歷史</a>
+		<!--版型縮小後的Menu-->	  
+	    <!--** data-target 應為 #navbar-toggler-icon -->
+		<!--** 請命名data-bs-target的ID名稱 -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#MyNavbar">
+		  <span class="navbar-toggler-icon"></span>
+  	    </button>
+		<!--導覽列的項目-->
+		<!--** class 增加 navbar-collapse，並且命名id名稱，此id與data-bs-target呼應 -->
+        <div class="collapse navbar-collapse" id="MyNavbar">
+		<!--** class 應為 navbar-nav me-auto -->
+          <ul class="navbar-nav me-auto">
+			<!--** 標籤a的class應為nav-link、active 為被選擇的項目 -->
+            <li class="nav-item active"><a class="nav-link" href="index1.html">首頁</a></li>
+			<li class="nav-item active"><a class="nav-link" target="content" href="game/0.html">互動式遊戲</a></li>
+            <li class="nav-item active"><a class="nav-link" target="content" href="index.html">故事(中文版)</a></li>
+            <li class="nav-item active"><a class="nav-link" target="content" href="index _jpver.html">故事(日文版)</a></li>
+			<li class="nav-item active"><a class="nav-link" target="content" href="test1.html">中文測驗</a></li>
+			<li class="nav-item active"><a class="nav-link" target="content" href="test2.html">日文測驗</a></li>
+			<li class="nav-item active"><a class="nav-link" target="content" href="memorygame.html">翻牌遊戲</a></li>
+			<li class="nav-item active"><a class="nav-link" target="content" href="index3.html">學習歷程</a></li>
+			<li class="nav-item active"><a class="nav-link" target="content" href="ref/Source.html">參考資料</a></li>
+			<li class="nav-item active"><a class="nav-link" target="content" href="intro/introduction.html">關於我們</a></li>
+          </ul>
+        </div>		
+      </div>
+    </nav>	
+
+  
+    <iframe id="interactive-game" name="content" frameborder="0" scrolling="auto" width="100%" height="800" src="game/0.html"></iframe>
+
+    <!--頁尾-->
+    <hr> 	
+	<footer>  
+	  <div class="container">
+		
+        <center><p>&copy; 2023臺北城不該不知的腳下歷史&middot;<a href="#">隱私權政策</a>&middot;<a href="#">服務條款</a></p></center>
+		<!--** 以下置右對齊，class 應為 text-end-->	
+		
+	  </div>	
+    </footer>
+    </body>

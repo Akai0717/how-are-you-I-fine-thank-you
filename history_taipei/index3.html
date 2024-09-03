@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>臺北城不該不知的腳下歷史</title> 
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> 
+	
+	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	<style>
+		div[class|="col"]{background-color:white;border: 0.5px ;}
+
+	.bg-custom {
+		background-color: #678f8d;
+	}
+
+	.bg-custom.navbar-dark .navbar-nav .nav-link {
+		color: #ffd900;
+	}
+
+	.spaced-text {
+		font-size: 30px;
+		
+	}
+
+	.custom-link {
+		color:blue;
+	}
+
+	.custom-btn {
+		background-color: #678f8d;
+		color: #FFFFFF;
+		border: 0;
+	}
+
+	.custom-btn:hover {
+		background-color: #8cc0bd; 
+		color: #FFFFFF; 
+	}
+
+	.custom-btn:active {
+		background-color: #678f8d !important;
+		color: #FFFFFF;
+	}
+
+	</style>
+
+  </head>
+
+  <script>
+	window.onload = function() {
+            var t1 = document.getElementById("t1");
+            var storedName = localStorage.getItem("userName");
+            t1.innerHTML = storedName + "的學習歷程";
+
+			var storedValue = localStorage.getItem('formattedTime');
+			var fb1 = document.getElementById("fb1");
+
+			if (storedValue) {
+				fb1.innerHTML = storedValue; 
+			} else {
+				fb1.innerHTML = 'No value stored';
+			}
+
+			var gameRecords3 = JSON.parse(localStorage.getItem('gameRecords3')) || [];
+			var fb2 = document.getElementById("fb2");
+			gameRecords3.forEach(function(record, index) {
+				var recordElement3 = document.createElement('div');
+				recordElement3.textContent = '第 ' + (index + 1) + ' 次測驗 - 作答時間：' + record.playTime + ' 秒，分數：' + record.Score + '分，答對率：'+record.accuracy+'%';
+				fb2.appendChild(recordElement3);
+			});
+
+			var gameRecords2 = JSON.parse(localStorage.getItem('gameRecords2')) || [];
+			var fb3 = document.getElementById("fb3");
+			gameRecords2.forEach(function(record, index) {
+				var recordElement2 = document.createElement('div');
+				recordElement2.textContent = '第 ' + (index + 1) + ' 次測驗 - 作答時間：' + record.playTime + ' 秒，分數：' + record.Score + '分，答對率：'+record.accuracy+'%';
+				fb3.appendChild(recordElement2);
+			});
+
+			var gameRecords = JSON.parse(localStorage.getItem('gameRecords')) || [];
+			var recordsContainer = document.getElementById("recordsContainer");
+			gameRecords.forEach(function(record, index) {
+				var recordElement = document.createElement('div');
+				recordElement.textContent = '第 ' + (index + 1) + ' 次遊玩 - 遊戲時間：' + record.playTime + ' 秒，遊玩次數：' + record.playCount + ' 次，答對率：'+record.accuracy+'%';
+				recordsContainer.appendChild(recordElement);
+			});
+
+
+			
+			var fb2 = document.getElementById("fb2");
+			
+			
+
+    }
+  </script>
+
+  
+
+  <body>
+    
+	<header>
+		<div class="container mt-3">	  	
+		  <h1 id="t1"></h1>
+		</div>	   
+	  </header>    
+	  
+	  <!--內容區-->
+	  <hr>  
+	  <div class="container">	  
+		<div class="row">
+		  <!--文章-->		
+		  <div class="col-md- col-md-offset-3">
+			<article>				
+			  <p class="center-text spaced-text">閱讀時間:</p><span id="fb1"></span>
+			  <br><br><br>
+			  <hr>
+			  
+			  <p class="center-text spaced-text">中文測驗紀錄:</p>
+			  	<div id="fb2"></div>
+			  <br><br><br>
+			  <hr>	
+
+			  <p class="center-text spaced-text">日文測驗紀錄:</p>
+			  	<div id="fb3"></div>
+			  <br><br><br>
+			  <hr>	
+
+			  <p class="center-text spaced-text">遊戲紀錄:</p>
+				<div id="recordsContainer"></div>
+			  <br><br><br>
+			  <hr>	
+	
+	
+	<footer>  
+		<div class="container">
+		  <p class="text-end"><a class="btn btn-secondary btn-lg custom-btn" href="#">Back to top</a></p>
+		  
+		</div>	
+	  </footer>
+   
+  </body>	
+</html>  
+    

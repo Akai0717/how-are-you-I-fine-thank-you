@@ -1,0 +1,167 @@
+<html>
+<head>
+    <title>randomtest</title>
+
+<script>
+    let inputb=["userAnswer1","userAnswer2","userAnswer3","userAnswer4","userAnswer5","userAnswer6","userAnswer7","userAnswer8","userAnswer9","userAnswer10"];
+    var gameRecords3 = [];
+    
+    window.onload = function() {
+        start();
+        document.getElementById("b1").hidden = true;
+        document.getElementById("b3").disabled = true;
+        var gameRecords3 = JSON.parse(localStorage.getItem('gameRecords3')) || [];
+        if (gameRecords3.length > 0) {
+            gameRecords3.forEach(function(record, index) {
+                console.log('作答時間：' + record.playTime + ' 秒，分數：' + record.Score + '分，答對率：'+record.accuracy+'%');
+            });
+        }
+    };
+
+
+
+    let v = ["向康熙皇帝提出「台灣棄留論」的是施琅",
+        "清朝決心認真治台的契機是因「牡丹社事件」爆發",
+        "1895年，中國割讓台灣島與澎湖半島、遼東半島予當時的日本",
+        "現存臺北城的四個城門中，唯一被拆掉的門是「東門」",
+        "打開臺北城門引日人入關進城的人是「辜顯榮」",
+        "下令進行全台舊慣大調查的是民政長官「後藤新平」",
+        "拆除連接臺北四城城門的城牆剛好是日本對台之「皇民化運動」時期",
+        "除了我們所熟知的四城門以外還有一個由林家興築的小城門，那個門叫做「小東門」",
+        "原經過(貫穿)北門的引道是「臺北橋」的引道",
+        "圍繞於臺北城門之內的建築物不包括中正紀念堂"];
+    let answer = ["O", "O", "O", "X", "O", "O", "X", "X", "X", "O"];
+    let num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let q = ["q1","q2","q3","q4","q5","q6","q7","q8","q9","q10"]
+    let num2 = 1;
+    let score = 0;
+    let wrongAnswer = [];
+    let ca=0,wa=0;
+    var timerid2,sec2=0;
+
+    function timerstar() {
+        var ref = document.getElementById('timer');
+        timerid2 = window.setInterval(() => {
+            sec2++;
+            var minutes = Math.floor(sec2 / 60);
+            var seconds = sec2 % 60;
+            var displaySeconds = seconds < 10 ? "0" + seconds : seconds;
+            ref.innerHTML = minutes + "分 " + displaySeconds + "秒";
+        }, 1000);
+    }
+
+    function clean() {
+        window.clearInterval(timerid2); 
+    }
+
+    function start() {
+        timerstar();
+        score = 0;
+        num2 = 1;
+        for (let i = 0; i < inputb.length; i++) {
+            let inputElement = document.getElementById(inputb[i]);
+            if (inputElement) {
+                inputElement.style.display = "inline-block";
+            }
+        }
+
+        b2 = document.getElementById("b2").hidden = false;
+        var b1 = document.getElementById("b1").disabled = true;
+
+        for (let j = num.length - 1; j > 0; j--) {
+            let randomNum = Math.floor(Math.random() * (j + 1));
+            let temp = num[j];
+            num[j] = num[randomNum];
+            num[randomNum] = temp;
+        }
+
+        for (let i = 0; i <= num.length - 1; i++) {
+            var q1 = document.getElementById(q[i]);
+            q1.innerHTML = "第" + num2 + "題 " + v[num[i]];
+            num2++;
+        }
+    }
+
+    function showanswer() {
+        clean();
+        b2 = document.getElementById("b2").disabled = true;
+        b3 = document.getElementById("b3").hidden = false;
+        b3 = document.getElementById("b3").disabled = false;
+        for (var i = 0; i < inputb.length; i++) {
+            var userAnswer = document.getElementById(inputb[i]).value;
+            if (userAnswer.toUpperCase() == answer[num[i]]) {
+                score += 10;
+                ca++;
+            } else {
+                wrongAnswer.push(i + 1);
+                wa++;
+            }
+        }
+        var fb1 = document.getElementById("fb1");
+        fb1.innerHTML = "總分:" + score + "分，共答對:" + ca + "題，答錯:" + wa + "題"
+        let wrongAnswersString = wrongAnswer.join(", ");
+        var fb2 = document.getElementById("fb2");
+        fb2.innerHTML = "答錯的題號：" + wrongAnswersString;
+
+        var g3cr = Math.round((score / 100) * 100);
+        var newGameRecord = {
+            playTime: sec2,
+            Score: score,
+            accuracy: g3cr,
+        };
+        gameRecords3.push(newGameRecord);
+        localStorage.setItem('gameRecords3', JSON.stringify(gameRecords3));
+    }
+
+    function again() {
+        clean();
+        sec2=0;
+        b3 = document.getElementById("b3").disabled = true;
+        num2 = 1, score = 0, wrongAnswer = [], ca = 0, wa = 0;
+        b2 = document.getElementById("b2").disabled = false;
+        for (let i = 0; i < inputb.length; i++) {
+            let inputElement = document.getElementById(inputb[i]);
+            if (inputElement) {
+                inputElement.value = "";
+            }
+        }
+        let fb1 = document.getElementById("fb1");
+        let fb2 = document.getElementById("fb2");
+        let tim = document.getElementById("timer");
+        if (fb1) {
+            fb1.innerHTML = "";
+        }
+        if (fb2) {
+            fb2.innerHTML = "";
+        }
+        if (tim) {
+            tim.innerHTML = "";
+        }
+        start();
+    }
+
+</script>
+
+</head>
+
+<body>
+    <button id="b1" onclick="start();">開始遊戲</button><br><br>
+    <button id="b3" onclick="again();">重玩一次</button>
+    
+    <br><br>計時: <span id="timer"></span>
+    <p>全為是非題，請用O和X作答</p>
+    <br><span id="q1"></span> &nbsp; <input id="userAnswer1" type="text" style="width: 50px">
+    <br><br><span id="q2"></span> &nbsp; <input id="userAnswer2" type="text" style="width: 50px">
+    <br><br><span id="q3"></span> &nbsp; <input id="userAnswer3" type="text" style="width: 50px">
+    <br><br><span id="q4"></span> &nbsp; <input id="userAnswer4" type="text" style="width: 50px">
+    <br><br><span id="q5"></span> &nbsp; <input id="userAnswer5" type="text" style="width: 50px">
+    <br><br><span id="q6"></span> &nbsp; <input id="userAnswer6" type="text" style="width: 50px">
+    <br><br><span id="q7"></span> &nbsp; <input id="userAnswer7" type="text" style="width: 50px">
+    <br><br><span id="q8"></span> &nbsp; <input id="userAnswer8" type="text" style="width: 50px">
+    <br><br><span id="q9"></span> &nbsp; <input id="userAnswer9" type="text" style="width: 50px">
+    <br><br><span id="q10"></span> &nbsp; <input id="userAnswer10" type="text" style="width: 50px">
+    <br><br><button id="b2" onclick="showanswer();">對答案</button>
+    <br><br><span id="fb1"></span>
+    <br><br><span id="fb2"></span>
+</body>
+</html>

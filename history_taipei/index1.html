@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>臺北城不該不知的腳下歷史</title>
+    <link rel="stylesheet" href="文字圖形轉圈圈.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> 
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        div[class|="col"] {background-color:white;border: 0.5px;}
+        .bg-custom {background-color: #678f8d;}
+        .bg-custom.navbar-dark .navbar-nav .nav-link {color: #ffd900;}
+        
+        nav.navbar { position: fixed; top: 0; width: 100%; z-index: 999; }
+        
+        body { padding-top: 70px; } 
+    </style>
+</head>
+<body>
+    
+    <a href="home.html">
+    <div class="loader">
+        <div class="text">
+            <p>臺北城-你不該不知的腳下歷史</p> 
+        </div>
+        <span><i> </i></span>
+    </div>
+
+    <script>
+        let text=document.querySelector('.text p');
+        text.innerHTML = text.innerHTML.split("").map((char,i)=>
+        ` <b style="transform:rotate(${i*10}deg)">${char} </b>`).join("") 
+    </script> 
+    </a>
+</body>
+</html>
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>臺北城不該不知的腳下歷史</title> 
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> 
+	
+	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	<style>
+		div[class|="col"]{background-color:white;border: 0.5px ;}
+
+		.bg-custom {
+    		background-color: #678f8d;
+		}
+
+		.bg-custom.navbar-dark .navbar-nav .nav-link {
+    		color: #ffd900;
+		}
+
+	
+
+	</style>
+  </head>
+
+  
+
+  <body>
+   
+    <!--頁首-->
+	<header>
+      <div class="container mt-3">	  	
+        <h1>互動式遊戲</h1>
+        <small class="text-muted">中文版</small>
+      </div>	   
+	</header>    
+	
+	<!--內容區-->
+    <hr>  
+    <div class="container">	  
+      <div class="row">
+	    <!--文章-->		
+		<div class="col-md-8">
+		  <article>
+			<h3>日本&middot;九州&middot;樂悠遊</h3>
+			<p><small>2022年10月by<a href="#">王小明</a></small></p>			
+			
+			<!--** 說明一-->	
+			<!--** class 應為 img-fluid rounded ,請加入圖片檔，如 image/p01.jpg -->			
+			<img class="img-fluid rounded" src="image/p01.jpg">		
+			<p>說明一：暢玩九州高人氣豪斯登堡，漫遊福岡、宮崎、鹿兒島、湯布院。搭由布院、萌熊等鐵道列車等相關示意(以上文字取自網路)。</p>	
+			<p><a class="btn btn-primary" href="#" role="button"
+			      data-bs-toggle="modal" data-bs-target="#myModal01">詳細資料&raquo;</a>
+			</p>		  
+						
+			<hr>			
+			
+			<img class="img-fluid rounded" src="image/p02.jpg">		
+			<p>說明二：賞山海美景。跟團、自由行玩遍九州等相關示意(以上文字趣自網路)。</p>	
+			<p><a class="btn btn-primary" href="#" role="button"
+				data-bs-toggle="modal" data-bs-target="">詳細資料&raquo;</a>
+		  	</p>
+			<hr>
+
+			<img class="img-fluid rounded" src="image/p03.jpg">		
+			<p>說明三：走訪萌熊電車,櫻島火山,享受最道地拉麵及各種體驗活動等相關示意(以上文字趣自網路)。</p>			
+			<p><a class="btn btn-primary" href="#" role="button"
+				data-bs-toggle="modal" data-bs-target="">詳細資料&raquo;</a>
+		  	</p>
+			<hr>
+			
+
+			<nav>
+			  <ul class="list-inline text-center">
+				<!--** li class 應為 list-inline-item ,btn class 應為 btn btn-secondary btn-lg -->	
+				<li class="list-inline-item"><a class="btn btn-secondary btn-lg" href="#">上一篇</a></li>
+				<li class="list-inline-item"><a class="btn btn-secondary btn-lg" href="#">下一篇</a></li>
+			  </ul>
+			</nav>
+		  </article>
+		</div>
+	
+		<!--側邊欄--> 		
+		<!--** class 應為 col-md-3 offset-md-1 -->						
+        <div class="col-md-3 offset-md-1">
+		  <aside>
+		    <!--第一個Card-->
+			<!--** class 應增加 border-info mb-3  -->			
+		    <div class="card" border-info mb-3>
+			  <!--** class 應增加 bg-info text-white  -->						
+              <div class="card-header bg-info text-white">
+                <h3>關於我們</h3>
+              </div>
+              <div class="card-body">
+                <p>這是由一群旅遊愛好者組成的blog，專門為同好特搜好玩的旅遊景點，也歡迎各位與我們一起分享！</p>
+              </div>
+		    </div>
+			<br>
+		  
+		    <!--第二個Card-->
+			<!--** class 應增加 border-success mb-3 -->			
+		    <div class="card border-success mb-3">
+			  <!--** class 應增加 bg-success text-white -->			
+			  <div class="card-header bg-success text-white">
+                <h3>其他網站</h3>
+              </div>
+              <div class="card-body">
+                <ol class="list-unstyled">
+                  <li><a href="#">兒童新樂園</a></li>
+                  <li><a href="#">劍湖山x園</a></li>
+				  <li><a href="#">清水寺</a></li>
+				  <li><a href="#">西伊豆堂島</a></li>
+				  <li><a href="#">伊豆高原</a></li>
+				  <li><a href="#">函館</a></li>
+				  <!--** 以下可再增加項目..  -->			
+				  
+                </ol>
+              </div>
+		    </div>
+
+            
+	      </aside>	
+        </div>
+      </div>
+	  
+	  <!--互動視窗-->
+      <div class="modal fade" id="myModal01" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">九州&middot;樂悠遊</h3>
+			  <!--** 關閉鈕，class 應為 btn-close ,data-dismiss 為 modal-->	
+			  <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+			<!--** 以下image，class 應為 img-fluid rounded ,圖檔為 image/p01.jpg-->	
+              <p class="text-center"><img class="img-fluid rounded" src="image/p01.jpg"></p>
+			  <p class="text-start">
+			    <!--** 以下自由補齊文字..-->	
+			    暢玩九州高人氣景點lalalala...。
+			  </p>
+            </div>           
+          </div>
+        </div>
+      </div>   
+      <!--互動視窗結束-->	 
+    </div>    
+	
+	<footer>  
+		<div class="container">
+		  <p class="text-end"><a class="btn btn-secondary btn-lg custom-btn" href="#">Back to top</a></p>
+		  
+		</div>	
+	  </footer>
+    
+  </body>	
+</html>  
+    
